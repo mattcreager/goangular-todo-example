@@ -1,2 +1,2 @@
 require('harp')
-  .server(__dirname, { port: process.env.port || 5000 });
+  .server(__dirname, { port: process.env.PORT || 5000 });
