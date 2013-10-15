@@ -1,0 +1,33 @@
+.app-wrapper {
+  float: none;
+  margin: 1.5em auto;
+}
+
+form[role="add-todo"] {
+  margin-bottom: 1.5em;
+}
+
+.list-group {
+  .checkbox {
+    margin: .25em 0;
+  }
+}
+
+.remove-todo {
+  color: #ccc;
+  float: right;
+  &:hover {
+    color: darken(red, 15%);
+    background: #eee;
+  }
+  &:active {
+    color: red;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.todo-count {
+  font-size: 1.1em;
+}
