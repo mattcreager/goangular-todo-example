@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "GoAngular Todo Example",
   "dependencies": {
-    "harp": "0.8.x"
+    "harp": "0.8.x",
+    "bower": "~1.2.7"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
