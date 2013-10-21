@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "bootstrap": "~3.0.0",
-    "angular": "~1.0.8"
+    "angular": "~1.0.8",
+    "goangular": "~1.0.0"
   }
 }
