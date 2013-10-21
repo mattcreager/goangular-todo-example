@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 6em;
+}
+
 .app-wrapper {
   float: none;
   margin: 1.5em auto;
@@ -8,6 +12,8 @@ form[role="add-todo"] {
 }
 
 .list-group {
+  max-height: 500px;
+  overflow-y: auto;
   .checkbox {
     margin: .25em 0;
   }
@@ -30,4 +36,36 @@ form[role="add-todo"] {
 
 .todo-count {
   font-size: 1.1em;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: .25em 0;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 -1px 10px 3px white;
+  h6 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .7em;
+    font-weight: bold;
+    a {
+      color: #aaa;
+      img {
+        position: relative;
+        top: -1px;
+        opacity: .8;
+      }
+      &:hover {
+        text-decoration: none;
+        color: #888;
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
