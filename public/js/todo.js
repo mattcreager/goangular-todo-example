@@ -7,7 +7,9 @@ angular
   .config(function($goConnectionProvider) {
     $goConnectionProvider.$set('https://goinstant.net/mattcreager/DingDong');
   })
-  .controller('TodoCtrl', ['$scope', '$goQuery', function($scope, $query) {
+  .controller('TodoCtrl', ['$scope', '$goKey', function($scope, $key) {
+    $scope.todos = $key('todos');
+    $scope.todos.$sync();
 
     $scope.addTodo = _.throttle(function() {
       var desc = $scope.newTodo;
@@ -37,31 +39,4 @@ angular
     $scope.removeTodo = function(key) {
       $scope.todos.$key(key).$remove();
     };
-
-    $scope.showAll = function() {
-      $scope.todos = $query('todos', {});
-      $scope.todos.$sync();
-    };
-
-    $scope.showActive = function() {
-      $scope.todos = $query('todos', { complete: false }, {});
-      $scope.todos.$sync();
-    };
-
-    $scope.showComplete = function() {
-      $scope.todos = $query('todos', { complete: true }, {});
-      $scope.todos.$sync();
-    };
-
-    $scope.clearCompleted = function() {
-      var completeTodos = $query('todos', { complete: true }, {}).$sync();
-
-      completeTodos.$on('ready', function() {
-         _.map(completeTodos.$omit(), function(todo, key) {
-          completeTodos.$key(key).$remove();
-        });
-      });
-    };
-
-    $scope.showAll();
   }]);
