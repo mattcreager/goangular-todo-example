@@ -14,7 +14,7 @@
         <div class="app-wrapper col-md-6">
           <h1>todo!</h1>
           <div class="well">
-            <form ng-submit="addTodo();newTodo=''" class="form-inline clearfix row" role="add-todo">
+            <form ng-submit="addTodo()" class="form-inline clearfix row" role="add-todo">
               <div class="form-group col-md-9 col-xs-8">
                 <label class="sr-only" for="add-todo">New Todo</label>
                 <input ng-model="newTodo" type="text" class="form-control input-lg" id="add-todo" placeholder="What do you need to do?">
@@ -24,12 +24,12 @@
               </div>
             </form>
             <ul class="list-group">
-              <li ng-repeat="todo in todos | filter:statusFilter" class="list-group-item clearfix">
+              <li ng-repeat="(key, todo) in todos" class="list-group-item clearfix">
                 <div class="checkbox">
                   <label class="pull-left">
-                    <input ng-model="todo.complete" type="checkbox" value=""><span ng-bind="todo.description"></span>
+                    <input ng-model="todo.complete" ng-click="changeStatus(key)" ng-disabled="todo.pendingUpdate" type="checkbox" value=""><span ng-bind="todo.description"></span>
                   </label>
-                  <button ng-click="removeTodo(todo)" type="button" class="btn btn-link btn-xs remove-todo"><i class="glyphicon glyphicon-remove"></i></button>
+                  <button ng-click="removeTodo(key)" type="button" class="btn btn-link btn-xs remove-todo"><i class="glyphicon glyphicon-remove"></i></button>
                 </div>
               </li>
             </ul>
@@ -41,16 +41,16 @@
               </div>
               <div class="col-xs-8">
                 <div class="btn-group pull-right">
-                  <button ng-click="todos = (todos | filter:{complete:false})" type="button" class="btn btn-sm btn-default">
+                  <button ng-click="clearCompleted()" type="button" class="btn btn-sm btn-default">
                     Clear Completed
                   </button>
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" ng-bind="currentStatus"><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a ng-click="statusFilter={};currentStatus='Show All'" href="#">Show All</a></li>
-                      <li><a ng-click="statusFilter={complete:false};currentStatus='Active'" href="#">Active</a></li>
-                      <li><a ng-click="statusFilter={complete:true};currentStatus='Completed'" href="#">Completed</a></li>
+                      <li><a ng-click="showAll()" href="#">Show All</a></li>
+                      <li><a ng-click="showActive()" href="#">Active</a></li>
+                      <li><a ng-click="showComplete()" href="#">Completed</a></li>
                     </ul>
                   </div>
                 </div>
@@ -88,6 +88,7 @@
     <!-- ↓ scripts ↓ -->
     <script src="https://cdn.goinstant.net/v1/platform.min.js"></script>
     <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/bootstrap/js/dropdown.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
