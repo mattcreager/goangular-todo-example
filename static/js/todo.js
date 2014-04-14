@@ -1,11 +1,14 @@
-/* global _ , angular*/
+/* jshint browser: true */
+/* global window, _ , angular*/
 
 'use strict';
 
 angular
   .module('todoApp', ['goangular'])
   .config(function($goConnectionProvider) {
-    $goConnectionProvider.$set('https://goinstant.net/mattcreager/DingDong');
+    var url = window.connectUrl;
+
+    $goConnectionProvider.$set(url);
   })
   .controller('TodoCtrl', ['$scope', '$goQuery', function($scope, $query) {
 
