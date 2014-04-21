@@ -1,10 +1,23 @@
 {
-  "name": "example-todo",
-  "version": "0.0.0",
+  "name": "goangular-todo-example",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mattcreager/goangular-todo-example",
+  "authors": [
+    "Matt Creager <mattcreager@goinstant.com>"
+  ],
+  "description": "An example todo app built with GoAngular.",
+  "main": "server.js",
+  "keywords": [
+    "goangular",
+    "angular",
+    "goinstant"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "bootstrap": "~3.0.0",
-    "angular": "~1.2.12",
-    "goangular": "3.2.*",
-    "lodash": "~2.4.1"
+    "jquery": "2.1.0",
+    "angular": "v1.2.15",
+    "goangular": "v3.3.5",
+    "bootstrap": "3.0.0",
+    "lodash": "2.4.1"
   }
 }

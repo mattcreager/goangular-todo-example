@@ -37,7 +37,7 @@
           <div class="panel panel-default">
             <div class="panel-body row">
               <div class="col-xs-4 todo-count">
-                <span class="label label-primary" ng-bind-template="{{ (todos | filter:{complete:false}).length }}"></span> left to do
+                <span class="label label-primary" ng-bind-template="{{ (todos | keyFilter | filter:{complete:false}).length }}"></span> left to do
               </div>
               <div class="col-xs-8">
                 <div class="btn-group pull-right">
@@ -85,14 +85,21 @@
       </ul>
     </div>
 
-    <!-- ↓ scripts ↓ -->
+    <!-- Config -->
+    <script>
+      window.connectUrl = '<%- connectUrl %>';
+    </script>
+
+    <!-- Dependencies -->
     <script src="https://cdn.goinstant.net/v1/platform.min.js"></script>
-    <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/bootstrap/js/dropdown.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/goangular/dist/goangular.js"></script>
+
+    <!-- App -->
     <script src="/js/todo.js"></script>
 
     <script>
